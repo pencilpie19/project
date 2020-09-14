@@ -4,15 +4,14 @@ peerapp = (function() {
     console.log("Peer client started");
 
     var PEER_SERVER = '134.209.254.169';
-    var PORT =80;
+    var PORT = 443;
     var connectedPeers = {};
     var myPeerID = generateRandomID(4);
     var peer;
     var peerIdAlreadyTakenCount = 3;
 
     // Compatibility shim
-    
-    navigator.mediaDevices.getUserMedia = navigator.mediaDevices.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
     // Connect to server
     function connectToServerWithId(peerId) {
@@ -206,7 +205,7 @@ peerapp = (function() {
         }
 
         // Get audio/video stream
-        navigator.mediaDevices.getUserMedia(options, function(stream) {
+        navigator.getUserMedia(options, function(stream) {
             // Set your video displays
             window.localStream = stream;
             myapp.setMyVideo(window.localStream)
