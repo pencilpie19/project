@@ -11,7 +11,7 @@ peerapp = (function() {
     var peerIdAlreadyTakenCount = 3;
 
     // Compatibility shim
-    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+    navigator.mediaDevices.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
     // Connect to server
     function connectToServerWithId(peerId) {
