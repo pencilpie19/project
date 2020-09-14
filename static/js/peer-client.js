@@ -11,7 +11,8 @@ peerapp = (function() {
     var peerIdAlreadyTakenCount = 3;
 
     // Compatibility shim
-    navigator.mediaDevices.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+    
+    navigator.mediaDevices.getUserMedia = navigator.mediaDevices.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
     // Connect to server
     function connectToServerWithId(peerId) {
@@ -205,7 +206,7 @@ peerapp = (function() {
         }
 
         // Get audio/video stream
-        navigator.getUserMedia(options, function(stream) {
+        navigator.mediaDevices.getUserMedia(options, function(stream) {
             // Set your video displays
             window.localStream = stream;
             myapp.setMyVideo(window.localStream)
